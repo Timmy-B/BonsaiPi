@@ -1,5 +1,5 @@
 # BonsaiPI
-Automation server for your Bonsai(s)
+Automation server for your Bonsai(s) trees
 
 ## Features
 Consists of backend server and UI
