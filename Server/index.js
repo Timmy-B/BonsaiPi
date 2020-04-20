@@ -10,7 +10,7 @@ const defaultConfig = {
     general: { name: 'My Bonsai', species: 'Giant sequoia', unitSystem: 'metric', firstRun: true, configVersion: 1, },
     network: { 
         port: 8686, 
-        uniqueKey: '', //Key true idenifier of this device. should be generated on first run. allows for name change without data loss.
+        uniqueKey: '', //Key true identifier of this device. should be generated on first run. allows for name change without data loss.
         serverIP: '', //IP of the server this device will report to.
         mode: 'master', // master, slave - slave will not log historical data.
     },
