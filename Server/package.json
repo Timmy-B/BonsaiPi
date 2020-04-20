@@ -9,6 +9,7 @@
   "author": "TimmyB",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "ip": "^1.1.5"
   }
 }
