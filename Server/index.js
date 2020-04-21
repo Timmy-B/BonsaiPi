@@ -3,6 +3,8 @@ const fs = require('fs');
 const ini = require('ini');
 const app = express();
 const ip = require('ip');
+const sensor = require("node-dht-sensor").promises;
+//'https://github.com/jperkin/node-rpio'
 const myIP = ip.address();
 var config = {};
 const iniFile = './config.ini'
@@ -29,6 +31,9 @@ const defaultConfig = {
         targetMoisture: 80,
         targetHumidity: 80,
         targetLux: 80
+    },
+    sensors:{
+        humidTemp:{type: 11, pin: 4, enabled:true}
     }
 };
 try {
@@ -65,6 +70,11 @@ app.route('/config')
 
 
 app.get("/sensors", function (req, res) {
-    const readings = {temp:30, lux:13, humidity:72,moisture:50}  //place holder readings
+    const htType = config.sensors.humidTemp.type;
+    const htPin =  config.sensors.humidTemp.pin;
+    var humidTemp = sensor.readSync(htType, htPin);
+    console.log(humidTemp)
+    const readings = { temp: humidTemp.temperature, lux: 13, humidity: humidTemp.humidity, moisture:50}  //place holder readings
     res.json(readings);
 });
+
