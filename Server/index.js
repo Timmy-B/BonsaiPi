@@ -10,7 +10,7 @@ const defaultConfig = {
     general: { name: 'My Bonsai', species: 'Giant sequoia', unitSystem: 'metric', firstRun: true, configVersion: 1, },
     network: { 
         port: 8686, 
-        uniqueKey: '', //Key true identifier of this device. should be generated on first run. allows for name change without data loss.
+        uniqueKey: '', //true identifier of this device. should be generated on first run. allows for name change without data loss.
         serverIP: '', //IP of the server this device will report to.
         mode: 'master', // master, slave - slave will not log historical data.
     },
@@ -54,10 +54,6 @@ app.get("/", function (req, res) {
     res.json(config.general);
 });
 
-app.get("/", function (req, res) {
-    res.json(config.general);
-});
-
 app.route('/config')
     .get(function (req, res) {
         res.json(defaultConfig)
@@ -66,3 +62,9 @@ app.route('/config')
 
         res.send(`Updated Config - ${req.params}`)
     })
+
+
+app.get("/sensors", function (req, res) {
+    const readings = {temp:30, lux:13, humidity:72,moisture:50}  //place holder readings
+    res.json(readings);
+});
