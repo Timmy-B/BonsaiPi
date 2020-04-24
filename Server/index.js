@@ -15,6 +15,7 @@ const defaultConfig = {
         uniqueKey: '', //true identifier of this device. should be generated on first run. allows for name change without data loss.
         serverIP: '', //IP of the server this device will report to.
         mode: 'master', // master, slave - slave will not log historical data.
+        baseURL:''
     },
     sensorCalibration: { 
         lowTemp: 0,
@@ -52,14 +53,19 @@ try {
 }
 
 const port = config.network.port;
+const baseURL = config.network.baseURL;
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+app.listen(port, () => console.log(`BonasiPi listening at http://${myIP}:${port}${baseURL}`))
 
-app.listen(port, () => console.log(`BonasiPi listening at http://${myIP}:${port}`))
-
-app.get("/", function (req, res) {
+app.get(baseURL+"/", function (req, res) {
     res.json(config.general);
 });
 
-app.route('/config')
+app.route(baseURL+"/config")
     .get(function (req, res) {
         res.json(defaultConfig)
     })
@@ -69,7 +75,7 @@ app.route('/config')
     })
 
 
-app.get("/sensors", function (req, res) {
+app.get(baseURL+"/sensors", function (req, res) {
     const htType = config.sensors.humidTemp.type;
     const htPin =  config.sensors.humidTemp.pin;
     var humidTemp = sensor.readSync(htType, htPin);
