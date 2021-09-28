@@ -1,9 +1,18 @@
-const express = require('express');
+const express = require("express");
+// const crypto = require("crypto");
+const bodyParser = require("body-parser");
+const fileUpload = require("express-fileupload");
+const Database = require("better-sqlite3");
+const _ = require("lodash");
 const fs = require('fs');
+const path = require("path");
+const bonsaiDB = "./bonsai.db";
 const ini = require('ini');
 const app = express();
 const ip = require('ip');
-const sensor = require("node-dht-sensor").promises;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+// const sensor = require("node-dht-sensor").promises;
 //'https://github.com/jperkin/node-rpio'
 const myIP = ip.address();
 var config = {};
@@ -37,6 +46,25 @@ const defaultConfig = {
         humidTemp:{type: 11, pin: 4, enabled:true}
     }
 };
+
+initDatabase(function (response) {
+    console.log(response);
+});
+try {
+    if (fs.existsSync(iniFile)) {
+        config = ini.parse(fs.readFileSync(iniFile, 'utf-8'));
+    } else {
+        const newINI = ini.stringify(defaultConfig)
+        config = defaultConfig;
+        fs.writeFileSync(iniFile, ini.stringify(defaultConfig), function (err) {
+            if (err) throw err;
+            console.log('BonsaiPi config created successfully.');
+        });
+    }
+} catch (err) {
+    console.error(err);
+}
+
 try {
     if (fs.existsSync(iniFile)) {
         config = ini.parse(fs.readFileSync(iniFile, 'utf-8'));
@@ -75,12 +103,126 @@ app.route(baseURL+"/config")
     })
 
 
-app.get(baseURL+"/sensors", function (req, res) {
-    const htType = config.sensors.humidTemp.type;
-    const htPin =  config.sensors.humidTemp.pin;
-    var humidTemp = sensor.readSync(htType, htPin);
+app.get(baseURL + "/sensors", function (req, res) {
+    // const htType = config.sensors.humidTemp.type;
+    // const htPin =  config.sensors.humidTemp.pin;
+    // var humidTemp = sensor.readSync(htType, htPin);
     console.log(humidTemp)
-    const readings = { temp: humidTemp.temperature, lux: 13, humidity: humidTemp.humidity, moisture:50}  //place holder readings
+    // const readings = { temp: humidTemp.temperature, lux: 13, humidity: humidTemp.humidity, moisture:50}  //place holder readings
+    const readings = "stfu"
     res.json(readings);
 });
 
+
+
+function initDatabase(callback) {
+    const db = new Database(bonsaiDB);
+    const qry = db.prepare(`SELECT name
+    FROM sqlite_master
+    WHERE
+        type='table' and name='items'
+    ;`);
+    var row = qry.get();
+    if (row === undefined) {
+        //https://dbdesigner.page.link/jCtkSRXd2afzjD5K8
+        console.log("WARNING: Settings database appears empty; initializing it.");
+        const sqlInit = `
+        BEGIN TRANSACTION;
+        CREATE TABLE IF NOT EXISTS gardens (
+            id integer PRIMARY KEY AUTOINCREMENT,
+            name text,
+            type text,
+            soilType text,
+            waterInterval numeric,
+            lastWatered datetime,
+            nextWater datetime,
+            age datetime,
+            size text,
+            fertilizerType text,
+            fertilizerInterval text,
+            image blob
+        );
+
+        CREATE TABLE IF NOT EXISTS plants (
+            id integer PRIMARY KEY AUTOINCREMENT,
+            name text,
+            plantType text,
+            subType text,
+            count numeric,
+            soilType text,
+            lighting text,
+            waterInterval numeric,
+            lastWatered datetime,
+            gardenId integer,
+            nextWater datetime,
+            image blob
+        );
+
+        CREATE TABLE IF NOT EXISTS inventory (
+            id integer PRIMARY KEY AUTOINCREMENT,
+            name text,
+            type blob,
+            qty numeric,
+            packAmt numeric,
+            lowLevel numeric,
+            image blob
+        );
+
+        CREATE TABLE IF NOT EXISTS waterLog (
+            id integer PRIMARY KEY AUTOINCREMENT,
+            itemId datetime,
+            itemType datetime,
+            dateLog datetime
+        );
+
+        CREATE TABLE IF NOT EXISTS inventoryLog (
+            id integer PRIMARY KEY AUTOINCREMENT,
+            itemId integer,
+            used numeric,
+            usedDate datetime
+        );
+
+        CREATE TABLE IF NOT EXISTS gardenTypes (
+            id integer PRIMARY KEY AUTOINCREMENT,
+            gardenType integer,
+            size numeric
+        );
+
+        CREATE TABLE IF NOT EXISTS plantTypes (
+            id integer PRIMARY KEY AUTOINCREMENT,
+            name text,
+            type text,
+            comment text,
+            link text,
+            image blob,
+            lighting text,
+            waterInterval numeric,
+            zone text
+        );
+
+        CREATE TABLE IF NOT EXISTS gardenJournal (
+            id integer PRIMARY KEY AUTOINCREMENT,
+            gardenId integer,
+            note text,
+            image blob,
+            noteDate datetime
+        );
+
+        CREATE TABLE IF NOT EXISTS plantJournal (
+            id integer PRIMARY KEY AUTOINCREMENT,
+            plantId integer,
+            note text,
+            image blob,
+            noteDate datetime
+        );
+        COMMIT;
+    `;
+
+        db.exec(sqlInit);
+
+        callback("Settings DB initialized.");
+    } else {
+        callback("Settings DB exists");
+    }
+    db.close();
+}
