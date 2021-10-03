@@ -23,7 +23,7 @@
               </v-btn>
               <v-card>
                 <v-card-title>
-                  <span class="headline">User Profile</span>
+                  <span class="text-h5">User Profile</span>
                 </v-card-title>
                 <v-divider />
                 <v-card-text>

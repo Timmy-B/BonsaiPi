@@ -19,7 +19,7 @@
               alt="VVA"
               height="200"
             >
-            <h1 class="white--text mb-2 display-1 text-center">
+            <h1 class="white--text mb-2 text-h4 text-center">
               {{ info.title }}
             </h1>
             <div class="subheading mb-3 text-center">
@@ -44,7 +44,7 @@
             class="text-center"
           >
             <div class="text-center">
-              <h2 class="headline">
+              <h2 class="text-h5">
                 The best way to start developing
               </h2>
               <span class="subheading">
@@ -72,7 +72,7 @@
                       primary-title
                       class="layout justify-center"
                     >
-                      <div class="headline text-center">
+                      <div class="text-h5 text-center">
                         Material Design
                       </div>
                     </v-card-title>
@@ -98,7 +98,7 @@
                       primary-title
                       class="layout justify-center"
                     >
-                      <div class="headline">
+                      <div class="text-h5">
                         Fast development
                       </div>
                     </v-card-title>
@@ -124,7 +124,7 @@
                       primary-title
                       class="layout justify-center"
                     >
-                      <div class="headline text-center">
+                      <div class="text-h5 text-center">
                         Completely Open Sourced
                       </div>
                     </v-card-title>
@@ -149,7 +149,7 @@
             justify="center"
             class="flex-column"
           >
-            <div class="headline white--text mb-3 text-center">
+            <div class="text-h5 white--text mb-3 text-center">
               Web development has never been easier
             </div>
             <em>Kick-start your application today</em>
@@ -180,7 +180,7 @@
                   primary-title
                   class="layout justify-center"
                 >
-                  <div class="headline">
+                  <div class="text-h5">
                     Company info
                   </div>
                 </v-card-title>
@@ -199,7 +199,7 @@
                   primary-title
                   class="layout justify-center"
                 >
-                  <div class="headline">
+                  <div class="text-h5">
                     Contact us
                   </div>
                 </v-card-title>

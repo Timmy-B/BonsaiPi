@@ -6,7 +6,7 @@
           <div slot="widget-content">
             <div class="text-center flex-grow-1 align-center">
               <v-tooltip bottom>
-                <template v-slot:activator="{on}">
+                <template #activator="{on}">
                   <v-btn
                     dark
                     color="primary"
@@ -18,7 +18,7 @@
                 <span>Tooltip</span>
               </v-tooltip>
               <v-tooltip bottom>
-                <template v-slot:activator="{on}">
+                <template #activator="{on}">
                   <v-icon
                     dark
                     color="primary"
@@ -42,7 +42,7 @@
           <div slot="widget-content">
             <div class="text-center">
               <v-tooltip left>
-                <template v-slot:activator="{on}">
+                <template #activator="{on}">
                   <v-btn
                     dark
                     color="primary"
@@ -54,7 +54,7 @@
                 <span>Left tooltip</span>
               </v-tooltip>
               <v-tooltip top>
-                <template v-slot:activator="{on}">
+                <template #activator="{on}">
                   <v-btn
                     dark
                     color="primary"
@@ -66,7 +66,7 @@
                 <span>Top tooltip</span>
               </v-tooltip>
               <v-tooltip bottom>
-                <template v-slot:activator="{on}">
+                <template #activator="{on}">
                   <v-btn
                     dark
                     color="primary"
@@ -78,7 +78,7 @@
                 <span>Bottom tooltip</span>
               </v-tooltip>
               <v-tooltip right>
-                <template v-slot:activator="{on}">
+                <template #activator="{on}">
                   <v-btn
                     dark
                     color="primary"
@@ -103,7 +103,6 @@
               <v-row
                 class="flex"
 
-
                 justify="space-between"
               >
                 <v-col cols="12">
@@ -119,7 +118,7 @@
                     v-model="show"
                     top
                   >
-                    <template v-slot:activator="{on}">
+                    <template #activator="{on}">
                       <v-btn
                         icon
                         v-on="on"

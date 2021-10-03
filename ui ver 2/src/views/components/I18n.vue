@@ -154,7 +154,7 @@
           :items="desserts"
           class="elevation-1"
         >
-          <template v-slot:items="props">
+          <template #items="props">
             <td>{{ props.item.name }}</td>
             <td class="text-right">
               {{ props.item.calories }}

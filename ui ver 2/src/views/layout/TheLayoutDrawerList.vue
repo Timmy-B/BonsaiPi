@@ -27,7 +27,7 @@
         v-else
         :prepend-icon="getListIcon(item)"
       >
-        <template v-slot:activator>
+        <template #activator>
           <v-list-item-content>
             <v-list-item-title>
               {{ getListTitle(item) }}

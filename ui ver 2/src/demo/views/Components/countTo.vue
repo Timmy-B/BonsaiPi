@@ -28,7 +28,7 @@
           :prefix="prefix"
           :suffix="suffix"
           :autoplay="false"
-          class="display-4 font-weight-medium red--text text--lighten-1"
+          class="text-h1 font-weight-medium red--text text--lighten-1"
         />
       </v-col>
 

@@ -18,7 +18,6 @@ const steps = [
     description: null,
   },
 
-
   // Released ------------------------------------------------------
   {
     icon: 'https://avatars1.githubusercontent.com/u/13101802?s=60&v=4',

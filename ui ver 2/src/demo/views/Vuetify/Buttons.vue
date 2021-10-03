@@ -297,7 +297,6 @@
               </v-row>
               <v-row
 
-
                 class="mt-5"
               >
                 <v-col cols="12">
@@ -349,7 +348,6 @@
               class="pa-0 container--fluid"
             >
               <v-row
-
 
                 align="center"
               >

@@ -32,7 +32,7 @@
           {{ $t('settings.title') }}
         </v-toolbar-title>
         <v-tooltip left>
-          <template v-slot:activator="{on}">
+          <template #activator="{on}">
             <v-btn
               absolute
               dark

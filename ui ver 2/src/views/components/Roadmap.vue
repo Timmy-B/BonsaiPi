@@ -10,15 +10,15 @@
           v-for="step in steps"
           :key="step.title"
         >
-          <template v-slot:icon>
+          <template #icon>
             <v-avatar>
               <img :src="step.icon">
             </v-avatar>
-          </template><template v-slot:opposite>
+          </template><template #opposite>
             <span>{{ step.date ? step.date : 'Expected' }}</span>
           </template>
           <v-card class="elevation-2">
-            <v-card-title class="headline">
+            <v-card-title class="text-h5">
               {{ step.title }}
             </v-card-title>
             <v-card-text>

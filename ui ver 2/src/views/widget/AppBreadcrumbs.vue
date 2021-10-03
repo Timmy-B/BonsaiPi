@@ -4,7 +4,7 @@
     :items="levelList"
     divider="/"
   >
-    <template v-slot:item="props">
+    <template #item="props">
       <a @click.prevent="handleLink(props.item)">
         {{ generateTitle(props.item.meta.title) }}
       </a>

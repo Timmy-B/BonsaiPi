@@ -1,6 +1,6 @@
 <template>
   <app-center>
-    <template v-slot:page>
+    <template #page>
       <v-btn
         class="mx-2"
         color="info"

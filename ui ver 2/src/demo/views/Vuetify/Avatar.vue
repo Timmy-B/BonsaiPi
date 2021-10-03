@@ -30,10 +30,10 @@
                 </v-avatar>
               </v-badge>
               <v-avatar class="teal">
-                <span class="white--text headline">C</span>
+                <span class="white--text text-h5">C</span>
               </v-avatar>
               <v-avatar class="red">
-                <span class="white--text headline">J</span>
+                <span class="white--text text-h5">J</span>
               </v-avatar>
             </v-row>
           </div>

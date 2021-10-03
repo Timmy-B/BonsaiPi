@@ -37,7 +37,7 @@
           <v-card-text>
             <v-row>
               <v-col
-                class="caption"
+                class="text-caption"
                 cols="8"
               >
                 <span v-if="key !== 'shades'">

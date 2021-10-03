@@ -7,7 +7,7 @@
     >
       <v-col class="text-center">
         <v-card :class="`cyan accent-${nestedLevel}`">
-          <v-card-text>{{ $t(this.$route.meta.title) }}</v-card-text>
+          <v-card-text>{{ $t($route.meta.title) }}</v-card-text>
           <transition
             name="fade-transform"
             mode="out-in"

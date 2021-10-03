@@ -187,7 +187,7 @@
           >
             <v-card-title
               primary
-              class="title"
+              class="text-h6"
             >
               Lorem
             </v-card-title>

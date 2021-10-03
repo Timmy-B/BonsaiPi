@@ -19,7 +19,7 @@
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title class="title font-weight-light">
+          <v-list-item-title class="text-h6 font-weight-light">
             {{ title }}
           </v-list-item-title>
           <v-list-item-subtitle>
@@ -27,7 +27,7 @@
               :start-val="start"
               :end-val="end"
               :duration="duration"
-              class="title font-weight-bold"
+              class="text-h6 font-weight-bold"
             />
           </v-list-item-subtitle>
         </v-list-item-content>

@@ -1,6 +1,6 @@
 <template>
   <app-center>
-    <template v-slot:page>
+    <template #page>
       <p class="warn-content">
         {{ $t('guide.description') }}
         <a

@@ -1,7 +1,7 @@
 <template>
   <app-center>
-    <template v-slot:page>
-      <v-col class="display-4">
+    <template #page>
+      <v-col class="text-h1">
         Visitor
       </v-col>
     </template>

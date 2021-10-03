@@ -5,7 +5,7 @@
       persistent
       max-width="600px"
     >
-      <template v-slot:activator="{on}">
+      <template #activator="{on}">
         <v-btn
           class="info"
           :style="{background: color,borderColor: color}"

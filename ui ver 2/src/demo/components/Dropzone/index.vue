@@ -136,7 +136,6 @@ export default {
       } */
     });
 
-
     if (this.couldPaste) {
       document.addEventListener('paste', this.pasteImg);
     }
