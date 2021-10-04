@@ -1,0 +1,119 @@
+CREATE TABLE gardenJournal ( 
+	id                   integer NOT NULL  PRIMARY KEY  ,
+	gardenId             integer     ,
+	note                 text     ,
+	image                blob     ,
+	noteDate             datetime     
+ );
+
+CREATE TABLE gardenTypes ( 
+	id                   integer NOT NULL  PRIMARY KEY  ,
+	gardenType           integer     ,
+	size                 numeric     
+ );
+
+CREATE TABLE gardens ( 
+	id                   integer NOT NULL  PRIMARY KEY  ,
+	name                 text     ,
+	[type]               text     ,
+	soilType             text     ,
+	waterInterval        numeric     ,
+	lastWatered          datetime     ,
+	nextWater            datetime     ,
+	age                  datetime     ,
+	size                 text     ,
+	fertilizerType       text     ,
+	fertilizerInterval   text     ,
+	image                blob     
+ );
+
+CREATE TABLE inventory ( 
+	id                   integer NOT NULL  PRIMARY KEY  ,
+	name                 text     ,
+	[type]               blob     ,
+	qty                  numeric     ,
+	packAmt              numeric     ,
+	lowLevel             numeric     ,
+	image                blob     
+ );
+
+CREATE TABLE inventoryLog ( 
+	id                   integer NOT NULL  PRIMARY KEY  ,
+	itemId               integer     ,
+	used                 numeric     ,
+	usedDate             datetime     
+ );
+
+CREATE TABLE pest ( 
+	id                   integer NOT NULL  PRIMARY KEY  ,
+	itemId               integer     ,
+	itemType             text     ,
+	pestType             text     ,
+	dateInfected         text     
+ );
+
+CREATE TABLE plantJournal ( 
+	id                   integer NOT NULL  PRIMARY KEY  ,
+	plantId              integer     ,
+	note                 text     ,
+	image                blob     ,
+	noteDate             datetime     
+ );
+
+CREATE TABLE plantTypes ( 
+	id                   integer NOT NULL  PRIMARY KEY  ,
+	name                 text     ,
+	[type]               text     ,
+	comment              text     ,
+	link                 text     ,
+	image                blob     ,
+	lighting             text     ,
+	waterInterval        numeric     ,
+	zone                 text     
+ );
+
+CREATE TABLE plants ( 
+	id                   integer NOT NULL  PRIMARY KEY  ,
+	name                 text     ,
+	plantType            text     ,
+	subType              text     ,
+	count                numeric     ,
+	soilType             text     ,
+	lighting             text     ,
+	waterInterval        numeric     ,
+	lastWatered          datetime     ,
+	gardenId             integer     ,
+	nextWater            datetime     ,
+	image                blob     
+ );
+
+CREATE TABLE projects ( 
+	id                   integer NOT NULL  PRIMARY KEY  ,
+	name                 text     ,
+	comment              text     ,
+	dueDate              datetime     ,
+	completeDate         datetime     
+ );
+
+CREATE TABLE sqlite_sequence ( 
+	name                 enum     ,
+	seq                  enum     
+ );
+
+CREATE TABLE todoList ( 
+	id                   integer NOT NULL  PRIMARY KEY  ,
+	projectId            integer     ,
+	item                 text     ,
+	comment              text     ,
+	image                blob     ,
+	dueDate              datetime     ,
+	completeDate         datetime     
+ );
+
+CREATE TABLE waterLog ( 
+	id                   integer NOT NULL  PRIMARY KEY  ,
+	itemId               datetime     ,
+	itemType             datetime     ,
+	logDate              datetime     
+ );
+

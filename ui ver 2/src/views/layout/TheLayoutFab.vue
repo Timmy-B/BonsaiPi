@@ -1,5 +1,5 @@
 <template>
-  <v-content class="layout-fab">
+  <v-main class="layout-fab">
     <v-btn
       v-if="settingsPanelBtn"
       small
@@ -87,7 +87,7 @@
         </v-expansion-panel>
       </v-expansion-panels>
     </v-navigation-drawer>
-  </v-content>
+  </v-main>
 </template>
 
 <script>

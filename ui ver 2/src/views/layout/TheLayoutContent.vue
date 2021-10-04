@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-main>
     <transition
       name="fade-transform"
       mode="out-in"
@@ -8,7 +8,7 @@
         <router-view />
       </keep-alive>
     </transition>
-  </v-content>
+  </v-main>
 </template>
 
 <script>

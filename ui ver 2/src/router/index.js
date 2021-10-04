@@ -80,7 +80,21 @@ export const constantRoutes = [
         component: () => import('@/views/components/Plants'),
         name: 'Plants',
         meta: {
-          title: 'route.plants', icon: 'mdi-near-me', noCache: true, affix: true,
+          title: 'route.plants', icon: 'mdi-sprout', noCache: true, affix: true,
+        },
+      },
+    ],
+  },
+  {
+    path: '/',
+    component: Layout,
+    children: [
+      {
+        path: '/editor',
+        component: () => import('@/views/components/Editor'),
+        name: 'Editor',
+        meta: {
+          title: 'route.editor', icon: 'mdi-application-edit', noCache: true, affix: true,
         },
       },
     ],
