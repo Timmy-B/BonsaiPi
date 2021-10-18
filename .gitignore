@@ -116,3 +116,6 @@ dist
 
 # ini files
 *.ini
+
+# mac os
+.ds_store
